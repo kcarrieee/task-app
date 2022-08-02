@@ -4,13 +4,14 @@ import TodoItem from './TodoItem/TodoItem'
 
 interface TodoList {
     todos: Todo[]
+    selectTodoById: (id: number) => void
 }
 
-const List: React.FC<TodoList> = ({ todos }) => {
+const List: React.FC<TodoList> = ({ todos,selectTodoById }) => {
   return (
     <div className={ styles.list }>
       {todos.map(el => {
-        return <TodoItem todo={el} key={el.id}/>
+        return <TodoItem todo={el} key={el.id} selectTodoById={selectTodoById}/>
       })}
     </div>
   )

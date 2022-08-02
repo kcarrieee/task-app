@@ -18,3 +18,7 @@ body {
   max-width: 1360px;
   margin: 0 auto;
 }
+.main{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
