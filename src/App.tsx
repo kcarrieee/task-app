@@ -30,6 +30,7 @@ const Todo_list =[
 function App() {
   const [todos, setTodos] = useState(Todo_list)
   const [editElement, setEditElement] = useState<Todo['id'] | null>(null)
+  const [searchText, setSearchText] = useState('');
 
 
   const addTodo = ({ name }: Omit<Todo, 'status' | 'id' >) => {
@@ -48,12 +49,12 @@ function App() {
 
   return (
     <div className="App">
-     <Header todoNum={todos.length}/>
+     <Header todoNum={todos.length} handleSearch={setSearchText}/>
      <main className="main">
      <div>
      <AddForm addTodo={addTodo}/>
      <Container> 
-        <List todos={todos} selectTodoById={selectTodoById}/>
+        <List todos={todos.filter((todo)=>todo.name.toLowerCase().includes(searchText))} selectTodoById={selectTodoById}/>
       </Container>
       </div>
       <div>
