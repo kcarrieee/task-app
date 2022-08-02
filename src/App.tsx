@@ -10,18 +10,18 @@ import { Todo } from './types/types'
 const Todo_list =[
   {
     id: 1,
-    name: 'Test task',
+    name: 'Add tasks like “Read work emails every day at 10am” to fill your to-do list in seconds using powerful natural language recognition and recurring dates.',
     status: 'new'
   },
   {
     id: 2,
-    name: 'Make bed before you go to school hi whats going on',
-    status: 'new'
+    name: 'Remind you about self-imposed deadlines. Notifications, widgets, emails—the best applications make it obvious when something needs to be completed.',
+    status: 'in progress'
    
   },
   {
     id: 3,
-    name: 'Make dinner before you go to school hi whats going on',
+    name: 'Balancing power and simplicity',
     status: 'done'
    
   }
@@ -51,14 +51,15 @@ function App() {
     <div className="App">
      <Header todoNum={todos.length} handleSearch={setSearchText}/>
      <main className="main">
-     <div>
+     <div className="main__div">
      <AddForm addTodo={addTodo}/>
      <Container> 
         <List todos={todos.filter((todo)=>todo.name.toLowerCase().includes(searchText))} selectTodoById={selectTodoById}/>
       </Container>
       </div>
-      <div>
-        <EditTodo todos={todos} editElement={editElement} delTodo={delTodo} updateTodo={updateTodo}/></div>
+      <div className="main__div" >
+        <EditTodo todos={todos} editElement={editElement} delTodo={delTodo} updateTodo={updateTodo}/>
+      </div>
       </main>
     </div>
   );

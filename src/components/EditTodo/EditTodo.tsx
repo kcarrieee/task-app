@@ -1,6 +1,7 @@
 
 import { Todo } from '../../types/types'
 import EditPanel from './EditPanel/EditPanel'
+import styles from './EditTodo.module.scss'
 
 
 interface EditTodo {
@@ -13,11 +14,11 @@ interface EditTodo {
 const EditTodo: React.FC<EditTodo> = ({todos, editElement, delTodo, updateTodo }) => {
 
   return (
-     <div>
+     <div className={styles.block}>
         {todos.map(todo => {
             if (todo.id === editElement ){
                 return (
-                    <EditPanel {...todo}  delTodo={delTodo} updateTodo={updateTodo}/>
+                    <EditPanel {...todo} key={todo.id}  delTodo={delTodo} updateTodo={updateTodo}/>
                 ) 
             } 
             return null
