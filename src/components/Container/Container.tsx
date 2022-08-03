@@ -1,27 +1,25 @@
 
 import styles from './Container.module.scss'
-import { useRef, useEffect, ReactNode} from "react";
+import { useRef, useEffect, ReactNode} from "react"
 
+//Props for children nodes - list of tasks
 interface Iprops {
     children: ReactNode
 }
+
 const Container: React.FC<Iprops> = ({children}) => {
-    const refBox = useRef<HTMLDivElement>(null)
-    const refRight = useRef<HTMLDivElement>(null) 
+    const refBox = useRef<HTMLDivElement>(null) // Get ref of container div
+    const refRight = useRef<HTMLDivElement>(null) // Get ref of resizer element
 
     useEffect(() => {
-    const box = refBox.current
-    const styles = window.getComputedStyle(box!);
-    let width = parseInt(styles.width, 10);
-    let height = parseInt(styles.height, 10);
-    let x = 0;
-    let y = 0;
+     // Use useEffect() hook to run functions as soon as component mounts and remove event listeners when component unmounts.
+      
+    const box = refBox.current // Get div element from Ref, using Ref.current
+    const styles = window.getComputedStyle(box!) // Get the width and height of container div with getComputedStyle()
+    let width = parseInt(styles.width, 10); // compute width
+    let x = 0; // init x with 0
 
-    // if(box !== null){
-    //     box.style.left = "50px";
-    // }
-
-    // Right resize
+    // Right resize fucntion takes in event parametr
     const onMouseMoveRightResize = (event: MouseEvent) => {
       const dx = event.clientX - x
       x = event.clientX
@@ -31,20 +29,26 @@ const Container: React.FC<Iprops> = ({children}) => {
        
     };
 
+    // Removing event listener on mousemove
     const onMouseUpRightResize = (event: MouseEvent) => {
       document.removeEventListener("mousemove", onMouseMoveRightResize);
     };
 
+    // Getting X position of mouse with clientX, and updating styles of container box
     const onMouseDownRightResize = (event: MouseEvent) => {
       x = event.clientX;
       box!.style.left = styles.left;
-    //   box?.style.right = null;
       document.addEventListener("mousemove", onMouseMoveRightResize);
       document.addEventListener("mouseup", onMouseUpRightResize);
     };
+
+    // Getting the resizer element from ref
     const resizerRight = refRight.current;
+
+    // Adding event to resizer
     resizerRight?.addEventListener("mousedown", onMouseDownRightResize);
 
+    // clean up function for when components unmounts!
     return () => {
       resizerRight?.removeEventListener("mousedown", onMouseDownRightResize);
     }

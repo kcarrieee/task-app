@@ -7,8 +7,11 @@ import TaskContext from '../../context/TaskContext'
 
 const List= () => {
 
-  const { todos, selectTodoById, searchText} = useContext(TaskContext)
-
+  const { todos, selectTodoById, searchText} = useContext(TaskContext)  //Getting state from context
+  
+  // filter list of todos with Filter array method
+  // if todo text contains search text, then put this element to array (return true)
+  // Mapping over array and displaying items, if search text if empty, display all.
   return (
     <div className={ styles.list }>
       {todos

@@ -1,9 +1,4 @@
-
-export interface Iheader {
-    todoNum: number
-    handleSearch: (val : string) => void
-}
-
+//reusable type Todo
 export type Todo = {
     id: number;
     name: string;

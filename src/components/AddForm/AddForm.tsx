@@ -4,12 +4,14 @@ import styles from './AddForm.module.scss'
 
 
 const AddForm = () => {
-    const [name, SetName] = useState('')
-    const { addTodo } = useContext(TaskContext)
+    const [name, SetName] = useState('') // State for getting input value 
+    const { addTodo } = useContext(TaskContext) //Getting fucntion from context using distructuring
     
+    // Function runs on form submit to prevent default behaviour of form
     const onSend = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
+    // Function runs on form submit to add a new task with input value and lear form with SetName('')
     const onClick = () => {
         addTodo({name: name})
         SetName('')

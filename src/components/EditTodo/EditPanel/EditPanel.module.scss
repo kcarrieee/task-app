@@ -38,19 +38,23 @@
  .del_btn{
     border:none;
     outline: none;
-    background-color: rgb(145, 26, 26);
-    padding: 5px 10px;
-    color:#fff;
+    border:1px solid rgb(145, 26, 26);
+    padding: 10px 15px;
+    color:rgb(145, 26, 26);
     border-radius: 10px;
+    background-color: #fff;
+    cursor: pointer;
  }
   .update_btn {
       border: none;
       outline: none;
-      background-color: rgb(9, 9, 9);
-      padding: 5px 10px;
-      color: #fff;
+      border: 1px solid black;
+      padding: 10px 15px;
+      background-color: #fff;
+      color: #000;
       border-radius: 10px;
       margin-left: 10px;
+      cursor: pointer;
   }
   .input__update{
     width: 50%;
@@ -61,15 +65,15 @@
     border-bottom: 1px solid black;
   }
   select {
-      background-color: transparent;
-      border: none;
-      padding: 0 1em 0 0;
-      margin: 0;
-      width: 100%;
-      font-family: inherit;
-      font-size: inherit;
-      cursor: inherit;
-      line-height: inherit;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
   }
   .select {
       width: 30%;

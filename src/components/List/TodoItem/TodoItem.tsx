@@ -1,11 +1,15 @@
 import React from 'react'
 import { Todo } from '../../../types/types'
 import styles from './TodoItem.module.scss'
+
+// Interface for props
 interface TodoItem{
     todo: Todo
     selectTodoById: (id: number) => void
 }
 const TodoItem: React.FC<TodoItem> = ({todo, selectTodoById}) => {
+  // This components displays items ( name and status )
+  // Status conditional classes are defined with ternary operator
   return (
     <div className={styles.todo} onClick={() => selectTodoById(todo.id)}>
       <p className={styles.name}>{todo.name}</p>

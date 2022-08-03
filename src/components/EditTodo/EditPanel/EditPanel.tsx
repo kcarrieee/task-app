@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Todo } from '../../../types/types'
 import styles from './EditPanel.module.scss'
 
+//Interface for props
 interface EditPanelProps{
     id: number
     name: string
@@ -11,14 +12,16 @@ interface EditPanelProps{
 }
 
 const EditPanel:React.FC<EditPanelProps> = ({id, name, status, delTodo, updateTodo}) => {
-  const [ isEdit, setIsEdit]= useState(false)
-  const [input, SetInput] = useState(name)
-  const [newStatus, SetNewStatus] = useState('new')
-    
-    const onSend = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-    }
-    const onClick = () => {
+  const [ isEdit, setIsEdit]= useState(false) // State for edit mode ( boolean )
+  const [input, SetInput] = useState(name) // State for new input text
+  const [newStatus, SetNewStatus] = useState('new') // State for select input to update status
+  
+  // Prevent default form behaviour
+  const onSend = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
+  // on button click construct a new task
+  const onClick = () => {
         updateTodo(
           id,
           {
@@ -26,10 +29,9 @@ const EditPanel:React.FC<EditPanelProps> = ({id, name, status, delTodo, updateTo
           name: input,
           status: newStatus,
          })
-        SetInput('')
-        setIsEdit(false)
+        setIsEdit(false) // set edit mode to false
     }
-  
+  // JSX for edit mode
   if(isEdit){
     return (
        <form onSubmit={onSend}  className={styles.main}>
@@ -43,6 +45,7 @@ const EditPanel:React.FC<EditPanelProps> = ({id, name, status, delTodo, updateTo
     </form>
     )
   }
+  // JSX for readonly mode
   return (
          <div>
             <div className={styles.main}>

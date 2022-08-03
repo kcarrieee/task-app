@@ -1,4 +1,4 @@
-import { TaskProvider } from './context/TaskContext'
+import { TaskProvider } from './context/TaskContext' // Context provider
 import AddForm from "./components/AddForm/AddForm"
 import Container from "./components/Container/Container"
 import EditTodo from "./components/EditTodo/EditTodo"
@@ -8,9 +8,11 @@ import List from "./components/List/List"
 
 
 function App() {
+
+  // General layout:
  
   return (
-    <TaskProvider>
+    <TaskProvider> 
       <div className="App">
         <Header />
         <main className="main">
