@@ -1,18 +1,24 @@
 import styles from './List.module.scss'
-import { Todo } from '../../types/types'
 import TodoItem from './TodoItem/TodoItem'
+import { useContext } from 'react'
+import TaskContext from '../../context/TaskContext'
 
-interface TodoList {
-    todos: Todo[]
-    selectTodoById: (id: number) => void
-}
 
-const List: React.FC<TodoList> = ({ todos,selectTodoById }) => {
+
+const List= () => {
+
+  const { todos, selectTodoById, searchText} = useContext(TaskContext)
+
   return (
     <div className={ styles.list }>
-      {todos.map(el => {
-        return <TodoItem todo={el} key={el.id} selectTodoById={selectTodoById}/>
-      })}
+      {todos
+        .filter((todo)=>todo.name.toLowerCase().includes(searchText))
+        .map(el => {
+            return <TodoItem 
+                        todo={el} 
+                        key={el.id} 
+                        selectTodoById={selectTodoById}/>
+         })}
     </div>
   )
 }

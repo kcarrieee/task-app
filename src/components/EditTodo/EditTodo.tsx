@@ -1,17 +1,11 @@
-
-import { Todo } from '../../types/types'
 import EditPanel from './EditPanel/EditPanel'
 import styles from './EditTodo.module.scss'
+import { useContext } from 'react'
+import TaskContext from '../../context/TaskContext'
 
 
-interface EditTodo {
-    todos: Todo[]
-    editElement: number | null
-    delTodo:(id: number) => void
-    updateTodo: (editElement: number, newItem: Todo) => void
-}
-
-const EditTodo: React.FC<EditTodo> = ({todos, editElement, delTodo, updateTodo }) => {
+const EditTodo = () => {
+  const { todos, editElement, delTodo, updateTodo } = useContext(TaskContext)
 
   return (
      <div className={styles.block}>
@@ -23,7 +17,6 @@ const EditTodo: React.FC<EditTodo> = ({todos, editElement, delTodo, updateTodo }
             } 
             return null
         }
-      
       )}
     </div>
   )

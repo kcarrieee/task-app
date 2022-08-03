@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { Todo } from '../../types/types'
+import React, { useState, useContext } from 'react'
+import TaskContext from '../../context/TaskContext'
 import styles from './AddForm.module.scss'
 
-interface IAddForm {
-    addTodo: ({ name }: Omit<Todo, 'id' | 'status'>) => void
-}
-const AddForm: React.FC<IAddForm> = ({addTodo}) => {
+
+const AddForm = () => {
     const [name, SetName] = useState('')
+    const { addTodo } = useContext(TaskContext)
     
     const onSend = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()

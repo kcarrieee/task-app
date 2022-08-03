@@ -1,9 +1,11 @@
 import { FaSearch } from 'react-icons/fa'
 import styles from './Header.module.scss'
-import { Iheader } from '../../types/types'
+import { useContext } from 'react'
+import TaskContext from '../../context/TaskContext'
 
 
-const Header = ({todoNum, handleSearch }: Iheader)  => {
+const Header = ()  => {
+  const { todos, setSearchText } = useContext(TaskContext)
 
   return (
     <header className={styles.header}>
@@ -12,10 +14,10 @@ const Header = ({todoNum, handleSearch }: Iheader)  => {
           <div className={styles.icon}>
           <FaSearch/>
           </div>
-            <input type="text" placeholder="Search" onChange={(event)=> handleSearch(event.target.value)}/>
+            <input type="text" placeholder="Search" onChange={(event)=> setSearchText(event.target.value)}/>
         </div>
         <div className='summary'>
-         All tasks: {todoNum}
+         All tasks: {todos.length}
         </div>
       </header>
   )
