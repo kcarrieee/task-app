@@ -1,3 +1,8 @@
 .list{
     width: 70%
 }
+@media screen and (max-width: 600px) {
+    .list{
+        width: 90%
+    }
+}
